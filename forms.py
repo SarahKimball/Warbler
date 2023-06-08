@@ -1,15 +1,14 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, PasswordField
-from wtforms.validators import DataRequired, Length, Email, URL, Optional
-
-
+from wtforms import StringField, PasswordField, TextAreaField
+from wtforms.validators import DataRequired, Email, Length
 
 class UserEditForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired(), Length(max=20)])
+    username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    image_url = StringField('Image URL', validators=[Optional(), URL()])
-    header_image_url = StringField('Header Image URL', validators=[Optional(), URL()])
-    bio = TextAreaField('Bio', validators=[Optional(), Length(max=160)])
+    image_url = StringField('Image URL')
+    header_image_url = StringField('Header Image URL')
+    bio = TextAreaField('Bio')
+    password = PasswordField('Current Password', validators=[DataRequired()])
 
 
 
